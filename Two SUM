@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const hash={};
+    
+    // for creating the hash
+    for (let i=0;i<nums.length;i++){
+        let elements=nums[i]
+        hash[elements]=i;
+    }
+    // for comparing the values
+    for(let j=0;j<nums.length;j++)
+        {
+            let key=target-nums[j]
+            // check whether the hash has the key and is not the same with i index
+            if(hash[key]&&hash[key]!=j)
+                {
+                    return [j,hash[key]]
+                }
+        }
+    
+};
