@@ -1,0 +1,42 @@
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var letterCasePermutation = function(s) {
+    
+     const result=[];
+    
+     const depth_first_search=(i,s,record)=>{
+        
+        // basecase
+        if(i==s.length){
+            // join() is used to join the characters in one string
+            result.push(record.join(''));  
+            return;
+        }
+        
+        // recursivecase
+        let char=s[i];
+        if(Number.isInteger(parseInt(char))){
+            record.push(char);
+            depth_first_search(i+1,s,record);
+            record.pop();    
+        }   
+        else{     
+            // upper
+            record.push(char.toUpperCase());
+            depth_first_search(i+1,s,record);
+            record.pop();
+            
+            // lower
+            record.push(char.toLowerCase());
+            depth_first_search(i+1,s,record);
+            record.pop();
+        }
+        
+    }
+    
+    depth_first_search(0,s,[]); 
+    return result;
+    
+};
