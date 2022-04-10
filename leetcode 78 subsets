@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    const result=[];
+    let depth_first_search=(i,nums,record)=>{
+        
+        if(i==nums.length)
+            {
+                result.push(record.slice());
+                return;
+            }
+        // exclude
+        depth_first_search(i+1,nums,record)
+        
+        // include
+        record.push(nums[i])
+        depth_first_search(i+1,nums,record)
+        record.pop()
+        
+    }
+depth_first_search(0,nums,[])
+    return result;
+    };
